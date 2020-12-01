@@ -43,7 +43,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 50px 10px;
+  padding: 30px 10px;
   list-style: none;
 }
 
@@ -75,10 +75,12 @@ img {
 }
 
 /* filter */
-.genre-filter {
-    text-align: center;
+.genre-filter span {
+  text-align: center;
+  font-size: 20px;
 }
 
 .genre-filter select {
-    margin-left: 10px;
+  margin-left: 10px;
+  font-size: 14px;
 }
