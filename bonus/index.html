@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>CD BONUS</title>
+</head>
+<body>
+  <header class='app-header'>
+    <img src="img/logo.png" alt="">
+  </header>
+
+  <div id='app'>
+
+    <div class='cds-container'>
+
+      <div class='genre-filter'>
+          Filter by gender:
+          <select v-model="actualGenre" @change='filterGenre' name="" id="">
+            <option value="all">all</option>
+            <option value="pop">pop</option>
+            <option value="rock">rock</option>
+            <option value="metal">metal</option>
+            <option value="jazz">jazz</option>
+          </select>
+      </div>
+
+      <ul class='cds-list' v-if='cds.length > 0'>
+        <li class='cd' v-for='cd in cds'>
+          <div class='wrap-image'>
+            <img :src='cd.poster' :alt='cd.title'>
+          </div>
+
+          <h3 class='title'>{{cd.title}}</h3>
+          <div class='author'> {{cd.author}}</div>
+          <div class='year'>{{cd.year}}</div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
