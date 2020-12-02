@@ -1,25 +1,24 @@
 var app = new Vue({
     el: '#app',
     data: {
-        cds: [],
-        actualGenre: 'all',
+      cds: [],
+      cdsFilter: [],
+      actualGenre: 'all',
     },
     mounted: function () {
-        axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-        .then (result => {
-            this.cds = result.data.response;
-        })
+      axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+      .then (result => {
+        this.cds = result.data.response;
+        this.filterGenre();
+      })
     },
     methods: {
-        filterGenre: function () {
-            axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-            .then(result => {
-                let cdsList = result.data.response;
-                if (this.actualGenre !== 'all') {
-                    cdsList = cdsList.filter( cd => cd.genre.toLowerCase() === this.actualGenre );
-                }
-                this.cds = cdsList;
-            })
+      filterGenre: function () {
+        if (this.actualGenre !== 'all') {
+          this.cdsFilter = this.cds.filter( cd => cd.genre.toLowerCase() === this.actualGenre );
+        }else {
+          this.cdsFilter = this.cds;
         }
+      }
     }
 });
